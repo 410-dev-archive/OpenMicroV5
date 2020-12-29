@@ -86,9 +86,16 @@ Headers:
     - `std::vector<std::string> stringSplitToString(std::string s, std::string separator)`
       - This splits string, then change to the vector type.
   - `sensors.h`
-    - 
+    - Working in progress
   - C: `remotecontrol.h`
-    - 
+    - Working in progress
   - `files.h`
-    - 
+    - `std::string fReadStringFromFile(std::string fileName)`
+      - This reads string data from the specified file
+    - `int fWriteStringToFile(std::string fileName, std::string fileContent)`
+      - This writes given string to specific text file inside the SD card, then returns the exit code. (0=Success)
+    - `bool fFileExists(std::string fileName)`
+      - This returns true if file exists. Returns false otherwise.
+    - C: `fRenameFile(std::string original, std::string renameTo)`
+      - This renames file.
 

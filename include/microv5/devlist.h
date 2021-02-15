@@ -1,4 +1,5 @@
 #include "main.h"
+#include <vector>
 
 // You may edit this
 
@@ -12,3 +13,7 @@ pros::Motor MOTOR_FRONTARM_RIGHT(7);
 
 pros::Motor MOTOR_PULLER_LEFT(1);
 pros::Motor MOTOR_PULLER_RIGHT(2);
+
+std::vector<int> encLeft = {0, 0};
+std::vector<int> encRight = {0, 0};
+std::vector<int> encSide = {0, 0};

@@ -1,8 +1,5 @@
 #include "main.h"
 
-AEMotorControl mtctl;
-AESensorsUtility srutil;
-
   bool actionUpdate = false;
   bool liveControl = false;
   float multiplier = 1.0;

@@ -14,6 +14,14 @@ pros::Motor MOTOR_FRONTARM_RIGHT(7);
 pros::Motor MOTOR_PULLER_LEFT(1);
 pros::Motor MOTOR_PULLER_RIGHT(2);
 
+pros::Rotation ENCODER_LEFT();
+pros::Rotation ENCODER_RIGHT();
+pros::Rotation ENCODER_SIDE();
+
+pros::Motor WHEEL_LEFT[] = {WHEEL_FRONT_LEFT, WHEEL_BACK_LEFT};
+pros::Motor WHEEL_RIGHT[] = {WHEEL_FRONT_RIGHT, WHEEL_BACK_RIGHT};
+pros::Motor MOTOR_PULLER[] = {MOTOR_PULLER_LEFT, MOTOR_PULLER_RIGHT};
+
 std::vector<int> encLeft = {0, 0};
 std::vector<int> encRight = {0, 0};
 std::vector<int> encSide = {0, 0};

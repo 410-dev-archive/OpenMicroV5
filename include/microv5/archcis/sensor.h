@@ -1,6 +1,6 @@
 #include "main.h"
 
-int snGetShaftEncoderData() {
+int snGetShaftEncoderData(pros::Rotation specifiedEncoder) {
 
 }
 
@@ -17,5 +17,5 @@ void snSetShaftEncoderData() {
 }
 
 void snSetMotorEncoderData() {
-	
+
 }

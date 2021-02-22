@@ -14,9 +14,9 @@ pros::Motor MOTOR_FRONTARM_RIGHT(7);
 pros::Motor MOTOR_PULLER_LEFT(1);
 pros::Motor MOTOR_PULLER_RIGHT(2);
 
-pros::Rotation ENCODER_LEFT();
-pros::Rotation ENCODER_RIGHT();
-pros::Rotation ENCODER_SIDE();
+pros::ADIEncoder ENCODER_LEFT();
+pros::ADIEncoder ENCODER_RIGHT();
+pros::ADIEncoder ENCODER_SIDE();
 
 pros::Motor WHEEL_LEFT[] = {WHEEL_FRONT_LEFT, WHEEL_BACK_LEFT};
 pros::Motor WHEEL_RIGHT[] = {WHEEL_FRONT_RIGHT, WHEEL_BACK_RIGHT};

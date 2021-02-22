@@ -2,20 +2,20 @@
 
 void motorRunMultiple(pros::Motor specifiedMotors[], int motorCounts, int speed) {
   for(int i = 0; i < motorCounts; i++) {
-    specifiedMotors[i] = speed;
+    specifiedMotors[i].move(speed);
   }
 }
 
 void motorRun(pros::Motor specifiedMotor, int speed) {
-  specifiedMotor = speed;
+  specifiedMotor.move(speed);
 }
 
 void motorRunReverseMultiple(pros::Motor specifiedMotors[], int motorCounts, int speed) {
   for(int i = 0; i < motorCounts; i++) {
-    specifiedMotors[i] = -speed;
+    specifiedMotors[i].move(-speed);
   }
 }
 
 void motorRunReverse(pros::Motor specifiedMotor, int speed) {
-  specifiedMotor = -speed;
+  specifiedMotor.move(-speed);
 }

@@ -29,3 +29,13 @@ void motorStopMultiple(pros::Motor specifiedMotors[], int motorCounts) {
     specifiedMotors[i] = 0;
   }
 }
+
+void motorStop(pros::Motor specifiedMotor) {
+  specifiedMotor = 0;
+}
+
+void motorStopMultiple(pros::Motor specifiedMotors[], int motorCounts) {
+  for(int i = 0; i < motorCounts; i++) {
+    specifiedMotors[i] = 0;
+  }
+}

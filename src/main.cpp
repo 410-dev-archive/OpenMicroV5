@@ -1,11 +1,13 @@
 #include "main.h"
 
 #include "microv5/devlist.h"
+#include "microv5/hardlinker.h"
 
-#include "microv5/archcis/typeconvert.h"
-#include "microv5/archcis/display.h"
-#include "microv5/archcis/motor.h"
-#include "microv5/archcis/sensor.h"
+#include "microv5/typeconvert.h"
+#include "microv5/display.h"
+#include "microv5/remotecontrol.h"
+
+#include <vector>
 
 std::string SYSVERSION = "1.0a1b201228";
 void on_center_button() {}
@@ -34,6 +36,7 @@ void disabled() {}
  */
 void competition_initialize() {
 	dispPrint("Start Mode: Competition");
+	dispPrint("System is not ready.");
 }
 
 /**
@@ -49,6 +52,7 @@ void competition_initialize() {
  */
 void autonomous() {
 	dispPrint("Start Mode: Autonomous");
+	dispPrint("System is not ready.");
 }
 
 /**
@@ -66,19 +70,14 @@ void autonomous() {
  */
 void opcontrol() {
 	dispPrint("Start Mode: Operator Control");
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::Motor left_mtr(1);
-	pros::Motor right_mtr(2);
 
 	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = master.get_analog(ANALOG_RIGHT_Y);
+		std::vector<int> controllerStatusData = getRemoteData();
+		dispSetLine(lastPrintedLine + 1, "Left Y Axis: " + convertToString(controllerStatusData.at(0)));
+		dispSetLine(lastPrintedLine + 2, "Right Y Axis: " + convertToString(controllerStatusData.at(1)));
+		dispSetLine(lastPrintedLine + 3, "Button Up: " + convertToString(controllerStatusData.at(2)));
+		dispSetLine(lastPrintedLine + 4, "Button Down: " + convertToString(controllerStatusData.at(3)));
 
-		left_mtr = left;
-		right_mtr = right;
 		pros::delay(20);
 	}
 }

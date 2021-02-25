@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sstream>
 #include <vector>
+#include "microv5/typeconvert.h"
 
 // convertToString: to std::string,                 from int / double / char
 // convertToInt: to int,                            from std::string
@@ -9,40 +10,40 @@
 // stringSplitToInt: to vector<int>,                from std::string
 // stringSplitToString: to vector<std::string>,     from std::string
 
-std::string convertToString(int toConvert) {
+std::string MTypeConvert::convertToString(int toConvert) {
   std::ostringstream strstream;
   strstream << toConvert;
   return strstream.str();
 }
 
-std::string convertToString(double toConvert) {
+std::string MTypeConvert::convertToString(double toConvert) {
   std::ostringstream strstream;
   strstream << toConvert;
   return strstream.str();
 }
 
-std::string convertToString(char toConvert) {
+std::string MTypeConvert::convertToString(char toConvert) {
   std::string s(1, toConvert);
   return s;
 }
 
-int convertToInt(std::string integer) {
+int MTypeConvert::convertToInt(std::string integer) {
   return atoi(integer.c_str());
 }
 
-std::string stringJoin(std::vector<int> vect, std::string separator) {
+std::string MTypeConvert::stringJoin(std::vector<int> vect, std::string separator) {
     std::string str = "";
 		for(short i = 0; i < vect.size(); i++) str += convertToString(vect.at(i)) + separator ;
 		return str;
 }
 
-std::string stringJoin(std::vector<std::string> vect, std::string separator) {
+std::string MTypeConvert::stringJoin(std::vector<std::string> vect, std::string separator) {
   std::string str = "";
 	for(short i = 0; i < vect.size(); i++) str += vect.at(i) + separator ;
 	return str;
 }
 
-std::vector<int> stringSplitToInt(std::string s, std::string separator) {
+std::vector<int> MTypeConvert::stringSplitToInt(std::string s, std::string separator) {
 	size_t positionStart = 0, positionEnd = 0, separatorLength = separator.length();
 	std::string tkn;
 	std::vector<int> returnData;
@@ -55,7 +56,7 @@ std::vector<int> stringSplitToInt(std::string s, std::string separator) {
 	return returnData;
 }
 
-std::vector<std::string> stringSplitToString(std::string s, std::string separator) {
+std::vector<std::string> MTypeConvert::stringSplitToString(std::string s, std::string separator) {
 	size_t positionStart = 0, positionEnd = 0, separatorLength = separator.length();
 	std::string tkn;
 	std::vector<std::string> returnData;

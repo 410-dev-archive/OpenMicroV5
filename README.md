@@ -17,7 +17,7 @@ IT IS STRONGLY NOT RECOMMENDED TO USE BOTH CIS AND RIS, BECAUSE THERE MAY BE DUP
 
 To use CIS, change the header inclusion code to following:
 
-`#include "microv5/archcis/header.h"`
+`#include "microv5/header.h"`
 
 To use RIS, change the header inclusion code to following:
 

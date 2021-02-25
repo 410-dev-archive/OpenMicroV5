@@ -1,22 +1,24 @@
 #include "main.h"
 #include <string.h>
+#include "microv5/display.h"
+
 int lastPrintedLine = 0;
 
-void dispPrint(std::string content) {
+void MDisplay::print(std::string content) {
   lastPrintedLine += 1;
   pros::lcd::set_text(lastPrintedLine, content);
 }
 
-void dispSetLine(int specifiedLine, std::string content) {
+void MDisplay::setLine(int specifiedLine, std::string content) {
   pros::lcd::clear_line(specifiedLine);
   pros::lcd::set_text(specifiedLine, content);
 }
 
-void dispClear() {
+void MDisplay::clear() {
   pros::lcd::clear();
   lastPrintedLine = 0;
 }
 
-void dispSetPrintedLineTo(int lineNum) {
+void MDisplay::setPrintedLineTo(int lineNum) {
   lastPrintedLine = lineNum;
 }

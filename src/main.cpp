@@ -13,9 +13,9 @@ std::string SYSVERSION = "1.0a1b201228";
 void on_center_button() {}
 
 void initialize() {
-	dispPrint("OpenMicroV5 - VexV5 Micro Operating System");
-	dispPrint("Powered by AVER Software");
-	dispPrint("System Version " + SYSVERSION);
+	// dispPrint("OpenMicroV5 - VexV5 Micro Operating System");
+	// dispPrint("Powered by AVER Software");
+	// dispPrint("System Version " + SYSVERSION);
 }
 
 /**
@@ -35,8 +35,8 @@ void disabled() {}
  * starts.
  */
 void competition_initialize() {
-	dispPrint("Start Mode: Competition");
-	dispPrint("System is not ready.");
+	// dispPrint("Start Mode: Competition");
+	// dispPrint("System is not ready.");
 }
 
 /**
@@ -51,8 +51,8 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-	dispPrint("Start Mode: Autonomous");
-	dispPrint("System is not ready.");
+	// dispPrint("Start Mode: Autonomous");
+	// dispPrint("System is not ready.");
 }
 
 /**
@@ -69,14 +69,14 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	dispPrint("Start Mode: Operator Control");
+	//dispPrint("Start Mode: Operator Control");
 
 	while (true) {
-		std::vector<int> controllerStatusData = getRemoteData();
-		dispSetLine(lastPrintedLine + 1, "Left Y Axis: " + convertToString(controllerStatusData.at(0)));
-		dispSetLine(lastPrintedLine + 2, "Right Y Axis: " + convertToString(controllerStatusData.at(1)));
-		dispSetLine(lastPrintedLine + 3, "Button Up: " + convertToString(controllerStatusData.at(2)));
-		dispSetLine(lastPrintedLine + 4, "Button Down: " + convertToString(controllerStatusData.at(3)));
+		// std::vector<int> controllerStatusData = getRemoteData();
+		// dispSetLine(lastPrintedLine + 1, "Left Y Axis: " + convertToString(controllerStatusData.at(0)));
+		// dispSetLine(lastPrintedLine + 2, "Right Y Axis: " + convertToString(controllerStatusData.at(1)));
+		// dispSetLine(lastPrintedLine + 3, "Button Up: " + convertToString(controllerStatusData.at(2)));
+		// dispSetLine(lastPrintedLine + 4, "Button Down: " + convertToString(controllerStatusData.at(3)));
 
 		pros::delay(20);
 	}

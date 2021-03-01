@@ -22,3 +22,7 @@ void MDisplay::clear() {
 void MDisplay::setPrintedLineTo(int lineNum) {
   lastPrintedLine = lineNum;
 }
+
+int MDisplay::getPrintLine() {
+  return lastPrintedLine;
+}

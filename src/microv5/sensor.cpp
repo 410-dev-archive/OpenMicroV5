@@ -10,7 +10,7 @@ void MSensor::resetShaftEncoderValue(pros::ADIEncoder encoder) {
 }
 
 int MSensor::snGetMotorEncoderData(pros::ADIEncoder encoder) {
-
+	return encoder.get_value();
 }
 
 void MSensor::snGetVisionSensorData(pros::ADIEncoder encoder) {

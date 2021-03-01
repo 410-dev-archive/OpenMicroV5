@@ -1,21 +1,19 @@
 #include "main.h"
-
-#include "microv5/devlist.h"
-#include "microv5/hardlinker.h"
-
+#include "microv5/devices.h"
 #include "microv5/typeconvert.h"
 #include "microv5/display.h"
-#include "microv5/remotecontrol.h"
-
+#include "microv5/remote.h"
 #include <vector>
 
 std::string SYSVERSION = "1.0a1b201228";
+
 void on_center_button() {}
 
 void initialize() {
-	// dispPrint("OpenMicroV5 - VexV5 Micro Operating System");
-	// dispPrint("Powered by AVER Software");
-	// dispPrint("System Version " + SYSVERSION);
+	MDisplay display;
+	display.print("OpenMicroV5 - VexV5 Micro Operating System");
+	display.print("Powered by AVER Software");
+	display.print("System Version " + SYSVERSION);
 }
 
 /**
@@ -35,8 +33,11 @@ void disabled() {}
  * starts.
  */
 void competition_initialize() {
-	// dispPrint("Start Mode: Competition");
-	// dispPrint("System is not ready.");
+	MDisplay display;
+	display.print("Start Mode: Competition");
+	display.print("System is not ready.");
+	display.print("Redirecting to OP control...");
+	opcontrol();
 }
 
 /**
@@ -51,8 +52,11 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-	// dispPrint("Start Mode: Autonomous");
-	// dispPrint("System is not ready.");
+	MDisplay display;
+	display.print("Start Mode: Autonomous");
+	display.print("System is not ready.");
+	display.print("Redirecting to OP control...");
+	opcontrol();
 }
 
 /**
@@ -69,15 +73,17 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	//dispPrint("Start Mode: Operator Control");
-
+	MDisplay display;
+	display.print("Start Mode: Operator Control");
+	MRemote remote;
+	MTypeConvert typeconvert;
 	while (true) {
-		// std::vector<int> controllerStatusData = getRemoteData();
-		// dispSetLine(lastPrintedLine + 1, "Left Y Axis: " + convertToString(controllerStatusData.at(0)));
-		// dispSetLine(lastPrintedLine + 2, "Right Y Axis: " + convertToString(controllerStatusData.at(1)));
-		// dispSetLine(lastPrintedLine + 3, "Button Up: " + convertToString(controllerStatusData.at(2)));
-		// dispSetLine(lastPrintedLine + 4, "Button Down: " + convertToString(controllerStatusData.at(3)));
-
+		std::vector<int> controllerStatusData = remote.getRemoteButtonData();
+		remote.updateAll();
+		display.setLine(display.getPrintLine() + 1, "Left Y Axis: " + typeconvert.convertToString(controllerStatusData.at(0)));
+		display.setLine(display.getPrintLine() + 2, "Right Y Axis: " + typeconvert.convertToString(controllerStatusData.at(1)));
+		display.setLine(display.getPrintLine() + 3, "Button Up: " + typeconvert.convertToString(controllerStatusData.at(2)));
+		display.setLine(display.getPrintLine() + 4, "Button Down: " + typeconvert.convertToString(controllerStatusData.at(3)));
 		pros::delay(20);
 	}
 }
